@@ -1,0 +1,11 @@
+.m-15{
+    margin-top: 15%;
+}
+@media only screen and (max-width: 700px) {
+    .m-15{
+        margin-top: 30%;
+    }
+}
+.btn:hover, .btn:focus, .btn:active {
+    background: none;
+  }

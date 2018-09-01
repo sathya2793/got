@@ -1,0 +1,199 @@
+<!--Main container starts-->
+<div class="container-fluid bg" style="word-wrap: break-word;min-height:1024px;">
+  <div class="container">
+      <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="teal" type="square-jelly-box">
+          <p style="font-size: 20px; color: teal">Loading...</p>
+        </ngx-spinner>
+    <!--Container for Book starts-->
+    <div *ngIf="currentBook">
+      <div class="row">
+        <div class="col-4 m-15 p-1 ">
+          <a href="#" class="btn btn-info">Go Back </a>
+        </div>
+        <div class="col-8 m-15">
+          <div class="p-1 mx-auto">
+            <h4 class="text-white" fittext [activateOnResize]="true"
+            [minFontSize] ="10"
+            [maxFontSize] ="30"><strong>{{currentBook.name}}</strong></h4>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4 mt-5">
+          <img class="img-fluid" src="assets/img/book.png" alt="books">
+        </div>
+        <div class="col-md-8 mt-3 p-1">
+          <ngb-accordion activeIds="ngb-panel-0">
+            <ngb-panel title="Details">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group bg-dark">
+                    <li class="list-group-item"><strong>Authors: {{currentBook.authors}}</strong></li>
+                    <li class="list-group-item"><strong>Isbn: {{currentBook.isbn}}</strong></li>
+                    <li class="list-group-item"><strong>NumberOfPages: {{currentBook.numberOfPages}}</strong></li>
+                    <li class="list-group-item"><strong>publisher: {{currentBook.publisher}}</strong></li>
+                    <li class="list-group-item"><strong>country: {{currentBook.country}}</strong></li>
+                    <li class="list-group-item"><strong>MediaType: {{currentBook.mediaType}}</strong></li>
+                    <li class="list-group-item"><strong>Released: {{currentBook.released | date}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Characters">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item">{{currentBook.characters}}</li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Pov Characters">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item">{{currentBook.povCharacters}}</li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+        </div>
+      </div>
+    </div>
+    <!--Container for Book ends-->
+
+    <!--Container for Character starts-->
+    <div *ngIf="currentCharacter">
+      <div class="row">
+        <div class="col-4 m-15 p-1 ">
+          <a class="btn btn-info" href='#'>Go Back </a>
+        </div>
+        <div class="col-8 m-15 ">
+          <div class="p-1 mx-auto">
+            <h4 class="text-white" fittext [activateOnResize]="true"
+            [minFontSize] ="10"
+            [maxFontSize] ="30"><strong>{{currentCharacter.name}}</strong></h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <img class="img-fluid" src="assets/img/char.png" alt="character">
+        </div>
+        <div class="col-md-8 mt-3 p-1">
+          <ngb-accordion activeIds="ngb-panel-0">
+            <ngb-panel title="Details">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group bg-dark">
+                    <li class="list-group-item"><strong>Gender: {{currentCharacter.gender}}</strong></li>
+                    <li class="list-group-item"><strong>Birth: {{currentCharacter.born}}</strong></li>
+                    <li class="list-group-item"><strong>Death: {{currentCharacter.died}}</strong></li>
+                    <li class="list-group-item"><strong>Culture: {{currentCharacter.culture}}</strong></li>
+                    <li class="list-group-item"><strong>Played By: {{currentCharacter.playedBy}}</strong></li>
+                    <li class="list-group-item"><strong>Titles: {{currentCharacter.titles}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Family">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><strong>Father: {{currentCharacter.father}}</strong></li>
+                    <li class="list-group-item"><strong>Mother: {{currentCharacter.mother}}</strong></li>
+                    <li class="list-group-item"><strong>Spouse: {{currentCharacter.spouse}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Other">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><strong>Aliases: {{currentCharacter.aliases}}</strong></li>
+                    <li class="list-group-item"><strong>Allegiances: {{currentCharacter.allegiances}}</strong></li>
+                    <li class="list-group-item"><strong>TV Series: {{currentCharacter.tvSeries}}</strong></li>
+                    <li class="list-group-item"><strong>Books: {{currentCharacter.books}}</strong></li>
+                    <li class="list-group-item"><strong>Pov Books: {{currentCharacter.povBooks}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+        </div>
+      </div>
+    </div>
+    <!--Container for Character ends-->
+
+    <!--Container for House starts-->
+    <div *ngIf="currentHouse">
+      <div class="row">
+        <div class="col-4 m-15 p-1 ">
+          <a class="btn btn-info" href='#'>Go Back </a>
+        </div>
+        <div class="col-8 m-15 ">
+          <div class="p-1 mx-auto">
+            <h4 class="text-white" fittext [activateOnResize]="true"
+            [minFontSize] ="10"
+            [maxFontSize] ="30"><strong>{{currentHouse.name}}</strong></h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mt-5">
+          <img class="img-fluid" src="assets/img/house.png" alt="houses">
+        </div>
+        <div class="col-md-8 mt-3 p-1">
+          <ngb-accordion activeIds="ngb-panel-0">
+            <ngb-panel title="Details">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group bg-dark">
+                    <li class="list-group-item"><strong>Region: {{currentHouse.region}}</strong></li>
+                    <li class="list-group-item"><strong>Current Lord: {{currentHouse.currentLord}}</strong></li>
+                    <li class="list-group-item"><strong>Titles: {{currentHouse.titles}}</strong></li>
+                    <li class="list-group-item"><strong>Heir: {{currentHouse.heir}}</strong></li>
+                    <li class="list-group-item"><strong>Founded: {{currentHouse.founded}}</strong></li>
+                    <li class="list-group-item"><strong>Founder: {{currentHouse.founder}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Family">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><strong>Died Out: {{currentHouse.diedOut}}</strong></li>
+                    <li class="list-group-item"><strong>Words: {{currentHouse.words}}</strong></li>
+                    <li class="list-group-item"><strong>Seats: {{currentHouse.seats}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="Other">
+              <ng-template ngbPanelContent>
+                <div>
+                  <ul class="list-group">
+                    <li class="list-group-item"><strong>Over Lord: {{currentHouse.overlord}}</strong></li>
+                    <li class="list-group-item"><strong>Ancestral Weapons: {{currentHouse.ancestralWeapons}}</strong></li>
+                    <li class="list-group-item"><strong>Cadet Branches: {{currentHouse.cadetBranches}}</strong></li>
+                    <li class="list-group-item"><strong>Sworn Members: {{currentHouse.swornMembers}}</strong></li>
+                    <li class="list-group-item"><strong>Coat Of Arms: {{currentHouse.coatOfArms}}</strong></li>
+                  </ul>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+
+        </div>
+      </div>
+    </div>
+    <!--Container for House ends-->
+
+  </div>
+</div>
+<!--Main container starts-->

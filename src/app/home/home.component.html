@@ -1,0 +1,99 @@
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="input-group m-15 d-flex justify-content-center">
+     <input type="text" class="input-lg" [(ngModel)]="search" placeholder="seach for title..">
+     <div class="input-group-append">
+         <select class="selectpicker show-tick show-menu-arrow" [(ngModel)]="view" data-style="btn-success" data-width="fit">
+            <option value="" selected>All</option>
+            <option value="characters" data-icon="fa fa-user">Characters</option>
+            <option value="houses" data-icon="fa fa-home">Houses</option>
+            <option value="books" data-icon="fa fa-book">Books</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="teal" type="square-jelly-box">
+    <p style="font-size: 20px; color: teal">Loading...</p>
+  </ngx-spinner>
+
+  <div class="container px-3">
+      <div class="row" *ngIf="allItems.length>0">
+
+          <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of allItems | filter : search |sort|select:view">
+
+        <!--Book Card starts-->
+        <div class="card-deck">
+          <div data-aos="zoom-in-up" data-aos-duration="1000" *ngIf="item.isbn" class="card bookCard  my-5 border border-danger text-center">
+            <img class="img-fluid" src="assets/img/book.png" alt="books">
+            <div class="card-body">
+              <h5 class="card-title  text-white text-center" fittext [activateOnResize]="true"
+              [minFontSize] ="13"
+              [maxFontSize] ="20">{{item.name | uppercase}}</h5>
+              <p class="card-text text-white"><b>Released On: </b>{{item.released | date}}</p>
+              <p class="card-text text-white" fittext [activateOnResize]="true"
+              [minFontSize] ="13"
+              [maxFontSize] ="20"><b>Published By: </b>{{item.publisher}}</p>
+              <a [routerLink]="['/books',item.url.split('books/').pop()]" class="btn btn-danger">Know More <i class="fa fa-angle-double-right"></i></a>
+            </div>
+          </div>
+
+          <!--Book Card ends-->
+          <!--Character Card starts-->
+
+          <div data-aos="zoom-in-up" data-aos-duration="1000" *ngIf="item.gender" class="card characterCard my-5 border border-primary text-center">
+            <img class="img-fluid" src="assets/img/char.png" alt="characters">
+            <div class="card-body">
+              <h5 class="card-title text-center text-white">{{item.name | uppercase}}</h5>
+              <p class="card-text text-white"><b>Gender: </b>{{item.gender}}</p>
+              <p class="card-text text-white" fittext [activateOnResize]="true"
+              [minFontSize] ="13"
+              [maxFontSize] ="20"><b>Aliases: </b>{{item.aliases}}</p>
+              <a [routerLink]="['/characters',item.url.split('characters/').pop()]" class="btn btn-primary">Know More <i class="fa fa-angle-double-right"></i></a>
+            </div>
+          </div>
+
+          <!--Character Card ends-->
+          <!--House Card starts-->
+
+          <div data-aos="zoom-in-up" data-aos-duration="1000" *ngIf="item.region" class="card houseCard  my-5 border border-success text-center">
+            <img class="img-fluid" src="assets/img/house.png" alt="houses">
+            <div class="card-body">
+              <h5 class="card-title text-center text-white" fittext [activateOnResize]="true"
+              [minFontSize] ="13"
+              [maxFontSize] ="20">{{item.name | uppercase}}</h5>
+              <p class="card-text  text-white"><b>Region: </b>{{item.region}}</p>
+              <p class="card-text text-truncate  text-white"><b>Coat Of Arms: </b>{{item.coatOfArms}}</p>
+              <a [routerLink]="['/houses',item.url.split('houses/').pop()]" class="btn btn-success">Know More <i class="fa fa-angle-double-right"></i></a>
+            </div>
+          </div>
+
+          <!--House Card ends-->
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row mt-2">
+    <p> </p>
+  </div>
+  <go-top-button   [animate]="true"
+                 [speed]="50"
+                 [acceleration]="2"
+                 [scrollDistance]="300"
+                 [styles]="{
+                  'background': '#18d26e',
+                  'color': '#fff',
+                  'width': '44px',
+                  'height': '44px',
+                  'text-align': 'center',
+                  'font-size': '16px',
+                  'border-radius': '50%',
+                  'right': '5px'
+                 }">
+        <i class="fa fa-arrow-up"></i>
+  </go-top-button>
+
+</div>

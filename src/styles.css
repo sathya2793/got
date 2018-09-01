@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  scroll-behavior: smooth;
+}
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+
+.bg{
+  background: url("assets/img/bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.btn {
+    border-width: 2px;
+  }
+  
+.btn-primary {
+    background-color: #18BC9C;
+    border-color: #18BC9C;
+  }
+  
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #128f76;
+    border-color: #128f76;
+  }
+
+  .btn:hover, .btn:focus, .btn:active {
+    background: none;
+  }
+
+  
