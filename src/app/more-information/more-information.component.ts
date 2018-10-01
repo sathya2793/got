@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Router, ActivatedRoute } from "../../../node_modules/@angular/router";
 import { GotHttpService } from "../got-http.service";
 import { NgbAccordionConfig } from "@ng-bootstrap/ng-bootstrap";
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Location } from '@angular/common';
 @Component({
   selector: "app-more-information",
   templateUrl: "./more-information.component.html",
-  styleUrls: ["./more-information.component.css"]
+  styleUrls: ["./more-information.component.css"],
+  providers: [Location]
 })
-export class MoreInformationComponent implements OnInit, OnDestroy {
+export class MoreInformationComponent implements OnInit{
   public isCollapsed = false;
   public currentBook;
   public currentCharacter;
@@ -22,7 +24,8 @@ export class MoreInformationComponent implements OnInit, OnDestroy {
     private GotHttpService: GotHttpService,
     config: NgbAccordionConfig,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private location: Location
   ) {
     console.log("Details constructor is called.");
     // customize default values of accordions used by this component tree
@@ -30,7 +33,14 @@ export class MoreInformationComponent implements OnInit, OnDestroy {
     config.type = "info";
   }
 
+  goBackToPreviousPage(): any{
+
+    this.location.back();
+
+  }
+
   ngOnInit() {
+  
     console.log("Details onInit is called.");
     /** spinner starts on init */
     this.spinner.show();
@@ -109,10 +119,6 @@ export class MoreInformationComponent implements OnInit, OnDestroy {
       }
     );
   }
-  }
-
-  ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
   }
 
 }
